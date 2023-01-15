@@ -10,7 +10,8 @@ md_document(
   fig_width = 7,
   fig_asp = 0.618,
   fig_retina = 2,
-  tidyverse_style = TRUE
+  tidyverse_style = TRUE,
+  standalone = FALSE
 )
 }
 \arguments{
@@ -28,7 +29,9 @@ widely used retina displays, but will also result in the output of
 \verb{<img>} tags rather than markdown images due to the need to set the
 width of the image explicitly.}
 
-\item{tidyverse_style}{Use tidyverse knitr conventions? This sets
+\item{tidyverse_style}{Use tidyverse knitr conventions? This sets}
+
+\item{standalone}{Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 \code{collapse = TRUE}, \verb{comment = "#>}, \code{fig.align = "center"}, and
 \code{out.width = "700px"}.}
 }
