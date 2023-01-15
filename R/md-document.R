@@ -14,12 +14,17 @@
 #'
 #' @export
 #' @inheritParams rmarkdown::md_document
+#'
+#' @param toc	TRUE to include a table of contents in the output
+#' @param toc_depth	Depth of headers to include in table of contents
 #' @param fig_width Figure width (in inches).
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #'   `collapse = TRUE`, `comment = "#>`, `fig.align = "center"`, and
 #'   `out.width = "700px"`.
-md_document <- function(fig_width = 7,
+md_document <- function(toc = FALSE,
+                        toc_depth = 3,
+                        fig_width = 7,
                         fig_asp = 0.618,
                         fig_retina = 2,
                         tidyverse_style = TRUE
@@ -45,12 +50,20 @@ md_document <- function(fig_width = 7,
     knitr$opts_chunk$out.width <- "700px"
   }
 
+  # added toc from here ...
+  if (toc)
+    standalone <- TRUE
+  args <- c(if (standalone) "--standalone")
+  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth))
+  args <- c(args, "--wrap=none")
+
   pandoc <- rmarkdown::pandoc_options(
     to = goldmark_format(),
     from = paste0(rmarkdown::rmarkdown_format(), "+emoji"),
-    args = "--wrap=none",
+    args = args,
     ext = ".md"
   )
+  # ... to here
 
   input_rmd <- NULL
   old_options <- NULL
