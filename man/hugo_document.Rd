@@ -5,6 +5,8 @@
 \title{Deprecated: please use \code{md_document()}}
 \usage{
 hugo_document(
+  toc = FALSE,
+  toc_depth = 3,
   fig_width = 7,
   fig_asp = 0.618,
   fig_retina = 2,

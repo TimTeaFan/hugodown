@@ -5,6 +5,8 @@
 \title{An Rmd output format that produces Hugo-flavoured markdown}
 \usage{
 md_document(
+  toc = FALSE,
+  toc_depth = 3,
   fig_width = 7,
   fig_asp = 0.618,
   fig_retina = 2,
@@ -12,6 +14,10 @@ md_document(
 )
 }
 \arguments{
+\item{toc}{TRUE to include a table of contents in the output}
+
+\item{toc_depth}{Depth of headers to include in table of contents}
+
 \item{fig_width}{Figure width (in inches).}
 
 \item{fig_asp}{Figure aspect ratio, defaults to the golden ratio.}
