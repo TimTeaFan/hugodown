@@ -11,7 +11,8 @@ hugo_document(
   fig_asp = 0.618,
   fig_retina = 2,
   tidyverse_style = TRUE,
-  standalone = FALSE
+  standalone = FALSE,
+  pandoc_args = NULL
 )
 }
 \description{

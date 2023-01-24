@@ -11,7 +11,8 @@ md_document(
   fig_asp = 0.618,
   fig_retina = 2,
   tidyverse_style = TRUE,
-  standalone = FALSE
+  standalone = FALSE,
+  pandoc_args = NULL
 )
 }
 \arguments{
@@ -31,7 +32,9 @@ width of the image explicitly.}
 
 \item{tidyverse_style}{Use tidyverse knitr conventions? This sets}
 
-\item{standalone}{Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
+\item{standalone}{Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc
 \code{collapse = TRUE}, \verb{comment = "#>}, \code{fig.align = "center"}, and
 \code{out.width = "700px"}.}
 }
