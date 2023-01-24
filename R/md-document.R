@@ -21,6 +21,7 @@
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
+#' @param pandoc_args Additional command line options to pass to pandoc
 #'   `collapse = TRUE`, `comment = "#>`, `fig.align = "center"`, and
 #'   `out.width = "700px"`.
 md_document <- function(toc = FALSE,
@@ -29,7 +30,8 @@ md_document <- function(toc = FALSE,
                         fig_asp = 0.618,
                         fig_retina = 2,
                         tidyverse_style = TRUE,
-                        standalone = FALSE
+                        standalone = FALSE,
+                        pandoc_args = NULL
                         ) {
 
   knitr <- rmarkdown::knitr_options_html(
@@ -56,7 +58,7 @@ md_document <- function(toc = FALSE,
   if (toc)
     standalone <- TRUE
   args <- c(if (standalone) "--standalone")
-  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth))
+  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth), pandoc_args)
   args <- c(args, "--wrap=none")
 
   pandoc <- rmarkdown::pandoc_options(
