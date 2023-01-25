@@ -31,6 +31,7 @@ md_document <- function(toc = FALSE,
                         fig_retina = 2,
                         tidyverse_style = TRUE,
                         standalone = FALSE,
+                        includes = NULL,
                         pandoc_args = NULL
                         ) {
 
@@ -99,9 +100,13 @@ md_document <- function(toc = FALSE,
   knit_meta <- NULL
   output_dir <- NULL
   preprocess <- function(metadata, input_file, runtime, knit_meta, files_dir, output_dir) {
+    args <- c()
     knit_meta <<- knit_meta
     output_dir <<- output_dir
-    NULL
+    # NULL
+    args <- c(args, includes_to_pandoc_args(includes, filter = if (rmarkdown:::is_shiny_classic(runtime)) function(x) rmarkdown:::normalize_path(x,
+                                                                                                                         mustWork = FALSE) else identity))
+    args
   }
 
   postprocess <- function(metadata, input_file, output_file, clean, verbose) {
