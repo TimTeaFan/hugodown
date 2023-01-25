@@ -12,6 +12,7 @@ hugo_document(
   fig_retina = 2,
   tidyverse_style = TRUE,
   standalone = FALSE,
+  includes = NULL,
   pandoc_args = NULL
 )
 }

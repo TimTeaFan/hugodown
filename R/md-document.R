@@ -21,9 +21,8 @@
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
+#' @parm includes Named list of additional content to include within the document (typically created using the includes function).
 #' @param pandoc_args Additional command line options to pass to pandoc
-#'   `collapse = TRUE`, `comment = "#>`, `fig.align = "center"`, and
-#'   `out.width = "700px"`.
 md_document <- function(toc = FALSE,
                         toc_depth = 3,
                         fig_width = 7,

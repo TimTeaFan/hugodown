@@ -12,6 +12,7 @@ md_document(
   fig_retina = 2,
   tidyverse_style = TRUE,
   standalone = FALSE,
+  includes = NULL,
   pandoc_args = NULL
 )
 }
@@ -34,9 +35,10 @@ width of the image explicitly.}
 
 \item{standalone}{Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.}
 
-\item{pandoc_args}{Additional command line options to pass to pandoc
-\code{collapse = TRUE}, \verb{comment = "#>}, \code{fig.align = "center"}, and
-\code{out.width = "700px"}.}
+\item{includes}{Named list of additional content to include within the
+document (typically created using the \code{\link[rmarkdown]{includes}} function).}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \description{
 This RMarkdown output format is designed to generate markdown that is
