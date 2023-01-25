@@ -59,6 +59,7 @@ md_document <- function(toc = FALSE,
     standalone <- TRUE
   args <- c(if (standalone) "--standalone")
   args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth), pandoc_args)
+  args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   args <- c(args, "--wrap=none")
 
   pandoc <- rmarkdown::pandoc_options(
@@ -99,13 +100,9 @@ md_document <- function(toc = FALSE,
   knit_meta <- NULL
   output_dir <- NULL
   preprocess <- function(metadata, input_file, runtime, knit_meta, files_dir, output_dir) {
-    args <- c()
     knit_meta <<- knit_meta
     output_dir <<- output_dir
-    # NULL
-    args <- c(args, rmarkdown:::includes_to_pandoc_args(includes, filter = if (rmarkdown:::is_shiny_classic(runtime)) function(x) rmarkdown:::normalize_path(x,
-                                                                                                                         mustWork = FALSE) else identity))
-    args
+    NULL
   }
 
   postprocess <- function(metadata, input_file, output_file, clean, verbose) {
