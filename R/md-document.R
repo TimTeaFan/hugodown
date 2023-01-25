@@ -103,7 +103,7 @@ md_document <- function(toc = FALSE,
     knit_meta <<- knit_meta
     output_dir <<- output_dir
     # NULL
-    args <- c(args, includes_to_pandoc_args(includes, filter = if (rmarkdown:::is_shiny_classic(runtime)) function(x) rmarkdown:::normalize_path(x,
+    args <- c(args, rmarkdown:::includes_to_pandoc_args(includes, filter = if (rmarkdown:::is_shiny_classic(runtime)) function(x) rmarkdown:::normalize_path(x,
                                                                                                                          mustWork = FALSE) else identity))
     args
   }
